@@ -1,0 +1,15 @@
+.requestSection {
+	padding: 20px 0;
+	.requestBtn {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		@media screen and (max-width: 800px) { 
+          justify-content: start;
+		}
+		.requestList{
+			border: 0;
+			padding: 5px;
+		}
+	}
+}
