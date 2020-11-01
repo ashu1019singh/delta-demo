@@ -6,22 +6,33 @@ import style from "./card.module.scss";
 function CustomCard({ data }) {
   return (
     <Card className={style.card}>
+      <Card.Title className={`${style.truncate} ${style.carouselTitle}`}>
+        {data.DocumentTitle}
+      </Card.Title>
       <Card.Body>
         <div className={style.cardHeader}>
           <div className={style.flex}>
-            <span>{data.DocumentDate}</span>
-            <span>{data.Language}</span>
-            <span>{data.PublicationMethod}</span>
+            <div className={style.truncate}>
+              <span>FileName </span>
+              {data.FileName}
+            </div>
+            <div>
+              <span>PublicationMethod </span>
+              {data.PublicationMethod}
+            </div>
+            <div>
+              <span>DocumentDate </span>
+              {data.DocumentDate}
+            </div>
+            <div>
+              <span>Uploaded By </span>
+              {data.UploadedBy}
+            </div>
           </div>
-          <Card.Title className={style.ellipsis}>
-            {data.DocumentTitle}
-          </Card.Title>
         </div>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content. Some quick example text to build on the
-          card title and make up the bulk of the card's content.
-        </Card.Text>
+        <div className={style.cardFooter}>
+          <Card.Link href={data.FileLocation} target="_blank">View pdf</Card.Link>
+        </div>
       </Card.Body>
     </Card>
   );
@@ -29,11 +40,11 @@ function CustomCard({ data }) {
 
 /** Props **/
 CustomCard.defaultProps = {
-  data: {}
-}
+  data: {},
+};
 
 CustomCard.propTypes = {
-  data: PropTypes.object
-}
+  data: PropTypes.object,
+};
 
 export default CustomCard;

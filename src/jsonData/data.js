@@ -1,3 +1,5 @@
+import styles from '../app.module.scss'
+
 const topCategories = [
   {
     id: 1,
@@ -53,18 +55,43 @@ const navItems = [
   {
     id: 4,
     name: "Consulting",
+  },{
+    id: 5,
+    name: "Resources",
   },
 ];
 
+function SampleNextArrow(props) {
+  const { className, onClick } = props;
+  return (
+    <div
+      className={`${className} ${styles.arrowClass}`}
+      onClick={onClick}
+    />
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { className, onClick } = props;
+  return (
+    <div
+    className={`${className} ${styles.arrowClass}`}
+      onClick={onClick}
+    />
+  );
+}
+
 const sliderSettings = {
-  dots: true,
+  dots: false,
   infinite: false,
   speed: 500,
   slidesToShow: 4,
   slidesToScroll: 4,
   initialSlide: 0,
   centerPadding: "60px",
-  swipeToSlide: true,
+  swipeToSlide: true,  
+  nextArrow: <SampleNextArrow />,
+  prevArrow: <SamplePrevArrow />,
   responsive: [
     {
       breakpoint: 1024,

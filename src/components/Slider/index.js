@@ -6,13 +6,14 @@ import CustomCard from '../Card'
 import Grid from '../Grid'
 import { sliderSettings } from '../../jsonData/data';
 
-const CustomSlider = ({ slides, sliderSettingObj }) => {
+const CustomSlider = ({ carouselTitle, slides, sliderSettingObj }) => {   
 	return (
 		<Grid>
+			<div className={style.title}>{carouselTitle}</div>
 			<Slider {...sliderSettingObj}>
 				{slides.map((slide) => (
 					<div key={slide.id} className={style.slideWrapper}>
-						<CustomCard data={slide} />
+						<CustomCard data={slide}/>
 					</div>
 				))}
 			</Slider>
@@ -22,10 +23,14 @@ const CustomSlider = ({ slides, sliderSettingObj }) => {
 
 /** Props **/
 CustomSlider.defaultProps = {
+	carouselTitle: '',
+	slides: [],
 	sliderSettingObj: sliderSettings
 }
 
 CustomSlider.propTypes = {
+	carouselTitle: PropTypes.string,
+	slides: PropTypes.array,
 	sliderSettingObj: PropTypes.object
 }
 

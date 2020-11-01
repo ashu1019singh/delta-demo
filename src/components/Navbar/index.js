@@ -1,18 +1,14 @@
 import React from "react";
 import PropTypes from 'prop-types'
-import { Navbar, Nav, Button, Image } from "react-bootstrap";
-import Grid from "../Grid";
+import { Navbar, Nav, Button } from "react-bootstrap";
 import styles from "./navbar.module.scss";
-import Logo from "../../img/logo.png";
+import Icon from '../Icon'
 
 function CustomNavbar({ navItems }) {
   return (
     <div className={styles.header}>
-      <Grid>
         <Navbar expand="lg" className={styles.darkBg}>
-          <Navbar.Brand href="#home">
-            <Image src={Logo} />
-          </Navbar.Brand>
+        <Navbar.Brand href="#home" className={styles.logoText}>Delta Zone </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" className={styles.menuWrapper}>
             <Nav className={`${styles.menulist} mr-auto ml-auto`}>
@@ -23,25 +19,30 @@ function CustomNavbar({ navItems }) {
               ))}
             </Nav>
             <Nav className={styles.menulist}>
-              <Button variant="outline-light">Create Free Account</Button>
+              <div className={styles.searchBtn}>
+                 <Icon icon="search"/>
+              </div>
+              
+              <div className={styles.createBtn}>
+                <Button variant="outline-light">Create Free Account <Icon icon="googlePlus"/></Button>
+              </div>
               <Nav.Link href="#memes" className={styles.menu}>
                 Login
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-      </Grid>
     </div>
   );
 }
 
 /** Props **/
 CustomNavbar.defaultProps = {
-  navItems: []
+	navItems: []
 }
 
 CustomNavbar.propTypes = {
-  navItems: PropTypes.array
+	navItems: PropTypes.array
 }
 
 export default CustomNavbar;
